@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_restful import Api
-from views import VistaEmail, VistaMicroService
+from views import VistaEmail, VistaDetailEmail, VistaMicroService
 from models import db
 
 app = Flask(__name__)
@@ -17,5 +17,6 @@ def create_tables():
     db.create_all()
 
 api = Api(app)
-api.add_resource(VistaEmail, '/blacklists/<string:email>')
+api.add_resource(VistaEmail, '/blacklists')
+api.add_resource(VistaDetailEmail, '/blacklists/<string:email>')
 api.add_resource(VistaMicroService, '/ms-options')
